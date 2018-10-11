@@ -1,32 +1,27 @@
 var copyRandomList = function(head) {
-  const deepCopyList = new LinkedList()
-  let curNode = head
-  while (curNode) {
-    deepCopyList.addToTail(curNode)
-    curNode = curNode.next
+  const visited = {}
+  if (!head) return null
+  let oldNode = head
+  let newNode = new RandomListNode(head.label)
+  const newHead = newNode
+  while (oldNode) {
+    newNode.random = findOrCreateNode(oldNode.random, visited)
+    newNode.next = findOrCreateNode(oldNode.next, visited)
+    oldNode = oldNode.next
+    newNode = newNode.next
   }
-  return deepCopyList
+    return newHead
 }
 
-class LinkedList {
-  constructor() {
-    this.head = null
-    this.tail = null
-  }
+function findOrCreateNode(oldNode, visited) {
+  if (!oldNode) return null
+  if (visited[oldNode.label]) return visited[oldNode.label]
+  const newNode = new RandomListNode(oldNode.label)
+  visited[oldNode.label] = newNode
+  return newNode
+}
 
-  addToTail(node) {
-    if (!this.head) {
-      this.head = node
-      this.tail = this.head
-    } else {
-      const prevTail = this.tail
-      prevTail.next = node
-      this.tail = node
-    }
-    let curNode = node
-    while (curNode.random) {
-      node.random = curNode.random
-      curNode = curNode.random
-    }
-  }
+function RandomListNode(label) {
+  this.label = label;
+  this.next = this.random = null;
 }

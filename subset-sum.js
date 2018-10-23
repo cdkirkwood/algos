@@ -13,7 +13,7 @@ function subsetSum (target, array) {
 }
 
 console.log(subsetSum(2, [1,10,5,3])); // false
-console.log(subsetSum(10, [1,10,5,3])); // true
-console.log(subsetSum(9, [1,10,5,3])); // true
-console.log(subsetSum(19, [1,10,5,3])); // true
-console.log(subsetSum(17, [1,10,5,3])); // false
+// console.log(subsetSum(10, [1,10,5,3])); // true
+// console.log(subsetSum(9, [1,10,5,3])); // true
+// console.log(subsetSum(19, [1,10,5,3])); // true
+// console.log(subsetSum(17, [1,10,5,3])); // false
